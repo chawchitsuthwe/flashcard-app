@@ -1,12 +1,14 @@
 import os
+from flask_cors import CORS
 from . import create_app
 from . import db
 from .models import Category, Card
 from flask import abort, jsonify, request
 
 app = create_app(os.getenv("FLASK_CONFIG_ENV", "dev"))
+CORS(app)
 
-@app.route("/categories", methods=["GET"])
+@app.route("/category", methods=["GET"])
 def get_categories():
     categories = Category.query.all()
     return jsonify([category.to_json() for category in categories])

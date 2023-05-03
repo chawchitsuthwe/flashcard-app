@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CategoryList from "./Components/Category/CategoryList";
+import Header from "./Components/Common/Header";
+import Container from "react-bootstrap/esm/Container";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Header></Header>
+        <Container className="my-3">
+          <Routes>
+            <Route element={<CategoryList />} path="/" />
+          </Routes>
+        </Container>
+      </div>
+    </BrowserRouter>
   );
 }
 
